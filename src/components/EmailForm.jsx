@@ -3,7 +3,10 @@ import React from "react";
 import {addDoc, collection} from "firebase/firestore"
 import getFirestore from "../../util/getFirestore.jsx"
 
-
+/**
+ * This component is a wrapper around the EmailForm Plasmic component
+ * It handles the state of the form
+ */
 class EmailForm extends React.Component {
     constructor(props) {
         super(props);
@@ -19,15 +22,19 @@ class EmailForm extends React.Component {
         }
     }
 
+    /**
+     * On submit we submit to the firestore database
+     */
     async handleSubmit(event) {
         try {
             const {firstName, email} = this.state;
 
-            const docRef = await addDoc(collection(getFirestore(), "email_collection"), {
+            await addDoc(collection(getFirestore(), "email_collection"), {
                 first_name: firstName,
                 email: email,
                 new: true
             });
+            console.log("Submitted!")
         } catch (e) {
             console.error("Error adding document: ", e);
         }

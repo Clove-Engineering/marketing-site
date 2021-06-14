@@ -1,4 +1,4 @@
-import {initializeApp} from "firebase/app";
+import {initializeApp, getApps} from "firebase/app";
 import {getFirestore} from "firebase/firestore"
 
 const firebaseConfig = {
@@ -11,17 +11,16 @@ const firebaseConfig = {
     appId: "1:175287908418:web:8bc8b3042a7854b2d755db"
 };
 
-let firebaseApp = null;
-let db = null;
-
 const getFirestoreWrapper =  () => {
-    if (!firebaseApp) {
-        initializeApp(firebaseConfig)
+    const firebaseApps = getApps()
+    let firebaseApp = null
+    if (!firebaseApps) {
+        firebaseApp = initializeApp(firebaseConfig)
+    } else {
+        firebaseApp = firebaseApps[0]
     }
-    if (!db) {
-        db = getFirestore()
-    }
-    return db;
+
+    return getFirestore(firebaseApp);
 }
 
 export default getFirestoreWrapper;
