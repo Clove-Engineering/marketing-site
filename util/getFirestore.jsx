@@ -1,5 +1,5 @@
 import {initializeApp, getApps, setLogLevel, onLog} from "firebase/app";
-import {getFirestore} from "firebase/firestore"
+import {getFirestore, initializeFirestore} from "firebase/firestore"
 
 const firebaseConfig = {
     apiKey: "AIzaSyBIRlUFxpLe5i2gg2UL-uPyOhCCIMTMNos",
@@ -18,10 +18,16 @@ const getFirestoreWrapper =  () => {
         firebaseApp = firebaseApps[0]
     } else {
         firebaseApp = initializeApp(firebaseConfig)
-        setLogLevel("debug")
+        // setLogLevel("debug")
     }
 
-    return getFirestore(firebaseApp);
+    try {
+        return initializeFirestore(firebaseApp, {
+            experimentalAutoDetectLongPolling: true
+        })
+    } catch (e) {
+        return getFirestore(firebaseApp);
+    }
 }
 
 export default getFirestoreWrapper;
