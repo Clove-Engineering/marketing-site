@@ -1,4 +1,4 @@
-import {initializeApp, getApps} from "firebase/app";
+import {initializeApp, getApps, setLogLevel, onLog} from "firebase/app";
 import {getFirestore} from "firebase/firestore"
 
 const firebaseConfig = {
@@ -13,11 +13,12 @@ const firebaseConfig = {
 
 const getFirestoreWrapper =  () => {
     const firebaseApps = getApps()
-    let firebaseApp = null
-    if (firebaseApps.length === 0) {
-        firebaseApp = initializeApp(firebaseConfig)
-    } else {
+    let firebaseApp;
+    if (firebaseApps.length) {
         firebaseApp = firebaseApps[0]
+    } else {
+        firebaseApp = initializeApp(firebaseConfig)
+        setLogLevel("debug")
     }
 
     return getFirestore(firebaseApp);
