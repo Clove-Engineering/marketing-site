@@ -14,16 +14,17 @@ const firebaseConfig = {
 const getFirestoreWrapper =  () => {
     const firebaseApps = getApps()
     let firebaseApp;
+    console.log(firebaseApps.length)
     if (firebaseApps.length) {
         firebaseApp = firebaseApps[0]
     } else {
         firebaseApp = initializeApp(firebaseConfig)
-        // setLogLevel("debug")
+        setLogLevel("debug")
     }
 
     try {
         return initializeFirestore(firebaseApp, {
-            experimentalAutoDetectLongPolling: true
+            experimentalForceLongPolling: true
         })
     } catch (e) {
         return getFirestore(firebaseApp);
