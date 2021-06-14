@@ -14,7 +14,7 @@ const firebaseConfig = {
 const getFirestoreWrapper =  () => {
     const firebaseApps = getApps()
     let firebaseApp = null
-    if (!firebaseApps) {
+    if (firebaseApps.length === 0) {
         firebaseApp = initializeApp(firebaseConfig)
     } else {
         firebaseApp = firebaseApps[0]
