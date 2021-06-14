@@ -1,8 +1,23 @@
 This is a Next.js project bootstrapped with [`create-plasmic-app`](https://www.npmjs.com/package/create-plasmic-app).
 
+## Prerequisites
+
+
+1. Install NPM
+   
+2. Install Yarn (`npm install -g yarn`)
+
+3. Install the plasmic CLI (`@plasmicapp/cli`).
+
 ## Getting Started
 
-First, run the development server:
+First authenticate with Plasmic.
+
+```
+plasmic auth
+```
+
+Then, run the development server:
 
 ```bash
 yarn dev
