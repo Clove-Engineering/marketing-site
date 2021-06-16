@@ -14,3 +14,9 @@ a {
 * {
   box-sizing: border-box;
 }
+
+@font-face {
+  font-family: 'Butler';
+  font-display: swap;
+  src: url(/fonts/Butler.woff2) format('woff2');
+}
