@@ -9,7 +9,8 @@
   "$schema": "./node_modules/@plasmicapp/loader/plasmic-loader.schema.json",
   "substitutions": {
     "components": [
-      { "name": "EmailForm", "path": "src/components/EmailForm.jsx" }
+      { "name": "EmailForm", "path": "src/components/EmailForm.jsx" },
+      { "name": "Header", "path": "src/components/Header.jsx" }
     ]
   }
 }
