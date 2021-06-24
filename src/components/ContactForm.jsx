@@ -8,22 +8,24 @@ import {addDoc} from "../../util/firestore";
  * This component is a wrapper around the EmailForm Plasmic component
  * It handles the state of the form
  */
-const EmailForm = (props) => {
+const ContactForm = (props) => {
     const [submitted, setSubmitted] = useState(false)
 
-    const emailSignUpFormSchema = yup
+    const contactFormSchema = yup
         .object()
         .shape({
-            firstName: yup.string().required().min(3),
+            name: yup.string().required().min(3),
             email: yup.string().email().required(),
+            phone: yup.string(),
+            message: yup.string().required()
         })
         .noUnknown()
 
     return (
-        <Formik initialValues={{firstName: "", email: ""}}
-                validationSchema={emailSignUpFormSchema}
+        <Formik initialValues={{name: "", email: "", phone: "", message: ""}}
+                validationSchema={contactFormSchema}
                 onSubmit={async (values) => {
-                    await addDoc(values, "email_collection", emailSignUpFormSchema);
+                    await addDoc(values, "contact_form", contactFormSchema);
                     setSubmitted(true);
                 }}
         >{
@@ -50,25 +52,31 @@ const EmailForm = (props) => {
                     }
                 })
                 return <PlasmicLoader
-                    component="EmailForm"
+                    component="ContactForm"
                     componentProps={{
                         ...props,
                         submitted: submitted,
                         submitButton: {
                             props: {
+                                disabled: isSubmitting,
                                 onClick: handleSubmit,
-                                disabled: isSubmitting
+                                type: "button"
                             }
                         },
-                        firstName: field("firstName"),
-                        firstNameError: errorMessage("firstName"),
+                        name: field("name"),
+                        nameError: errorMessage("name"),
                         email: field("email", {type: "email"}),
-                        emailError: errorMessage("email")
-                    }}/>;
+                        emailError: errorMessage("email"),
+                        phone: field("phone"),
+                        phoneError: errorMessage("phone"),
+                        message: field("message"),
+                        messageError: errorMessage("message")
+                    }}
+                />;
             }}
         </Formik>
     )
 
 }
 
-export default EmailForm;
+export default ContactForm;

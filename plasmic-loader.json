@@ -10,6 +10,7 @@
   "substitutions": {
     "components": [
       { "name": "EmailForm", "path": "src/components/EmailForm.jsx" },
+      { "name": "ContactForm", "path": "src/components/ContactForm.jsx" },
       { "name": "Header", "path": "src/components/Header.jsx" }
     ]
   }
