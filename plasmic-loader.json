@@ -6,25 +6,13 @@
       "projectApiToken": "GuzHKdnIxgG19MbzK95CapcQ1gOPC3HOUVRLJ2aGQ6WitSQ5TfNM1GfaCJmj9cykt6xOKJZHUkZmNDIGPcw"
     }
   ],
-  "$schema": "node_modules/@plasmicapp/loader/plasmic-loader.schema.json",
+  "$schema": "./node_modules/@plasmicapp/loader/plasmic-loader.schema.json",
   "substitutions": {
     "components": [
-      {
-        "name": "EmailForm",
-        "path": "src/components/EmailForm.jsx"
-      },
-      {
-        "name": "ContactForm",
-        "path": "src/components/ContactForm.jsx"
-      },
-      {
-        "name": "Header",
-        "path": "src/components/Header.jsx"
-      },
-      {
-        "name": "Actions",
-        "path": "src/components/Actions.jsx"
-      }
+      { "name": "EmailForm", "path": "src/components/EmailForm.jsx" },
+      { "name": "ContactForm", "path": "src/components/ContactForm.jsx" },
+      { "name": "Header", "path": "src/components/Header.jsx" },
+      { "name": "Actions", "path": "src/components/Actions.jsx" }
     ]
   }
 }
