@@ -11,6 +11,11 @@ const Actions = (props) => {
       component="Actions"
       componentProps={{
         ...props,
+        action1: {
+          props: {
+            children: <>Purchase from <a className={styles.action_link} href="/partners">businesses assessed by Clove</a></>,
+          }
+        },
         action2: {
           props: {
             children: <><a className={styles.action_link} href="/contact">Encourage</a> your favourite local business to get assessed</>,
